@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    font-weight: 500;
+    color: hsl(220, 20%, 25%);
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+.required {
+    color: hsl(0, 70%, 50%);
+    margin-left: 0.25rem;
+}
+
+.input {
+    padding: 0.875rem 1rem;
+    border: 0.0625rem solid hsl(220, 15%, 85%);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: all 0.2s ease;
+    background: hsl(0, 0%, 100%);
+    color: hsl(220, 20%, 15%);
+}
+
+.input:focus {
+    outline: none;
+    border-color: hsl(220, 90%, 55%);
+    box-shadow: 0 0 0 0.1875rem hsla(220, 90%, 55%, 0.15);
+}
+
+.input::placeholder {
+    color: hsl(220, 10%, 60%);
+}
+
+.inputError {
+    border-color: hsl(0, 70%, 55%);
+}
+
+.inputError:focus {
+    border-color: hsl(0, 70%, 55%);
+    box-shadow: 0 0 0 0.1875rem hsla(0, 70%, 55%, 0.15);
+}
+
+.error {
+    color: hsl(0, 70%, 50%);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.4;
+}

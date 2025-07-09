@@ -1,0 +1,33 @@
+.header {
+    background: hsl(0, 0%, 100%);
+    border-bottom: 0.0625rem solid hsl(220, 15%, 92%);
+    box-shadow: 0 0.0625rem 0.1875rem hsla(220, 20%, 20%, 0.04);
+}
+
+.container {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: hsl(220, 20%, 15%);
+    letter-spacing: -0.025em;
+}
+
+.userSection {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.welcome {
+    color: hsl(220, 10%, 55%);
+    font-weight: 500;
+    font-size: 0.875rem;
+}
