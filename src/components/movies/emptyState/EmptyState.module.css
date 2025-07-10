@@ -1,0 +1,23 @@
+.container {
+    text-align: center;
+    padding: 3.75rem 1.25rem;
+    background: hsl(0, 0%, 99%);
+    border-radius: 0.75rem;
+    border: 0.125rem dashed hsl(220, 15%, 85%);
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: hsl(220, 20%, 25%);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.0125em;
+}
+
+.description {
+    font-size: 1rem;
+    color: hsl(220, 10%, 55%);
+    line-height: 1.5;
+    max-width: 24rem;
+    margin: 0 auto;
+}

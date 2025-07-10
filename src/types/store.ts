@@ -1,7 +1,9 @@
 import { User } from './auth';
+import { Movie, MovieFilters, SortOptions } from './movie';
 
 export interface RootState {
     auth: AuthState;
+    movies: MoviesState;
     ui: UiState;
 }
 
@@ -19,6 +21,17 @@ export interface UiState {
     notifications: Notification[];
     isImporting: boolean;
 }
+
+export interface MoviesState {
+    movies: Movie[];
+    loading: boolean;
+    error: string | null;
+    selectedMovie: Movie | null;
+    filters: MovieFilters;
+    sortOptions: SortOptions;
+    searchResults: Movie[];
+    isSearching: boolean;
+  }
 
 export interface Notification {
     id: string;

@@ -1,0 +1,23 @@
+.container {
+    padding: 1.25rem;
+    max-width: 75rem;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+    color: hsl(220, 20%, 15%);
+    letter-spacing: -0.025em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 1.5rem;
+}

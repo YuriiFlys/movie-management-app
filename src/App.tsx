@@ -3,6 +3,7 @@ import { useAuth } from '@/hooks/useAuth';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import AuthContainer from '@/components/auth/authContainer/AuthContainer';
 import Header from '@/components/layout/header/Header';
+import MovieList from '@/components/movies/movieList/MovieList';
 import styles from './App.module.css';
 
 function App() {
@@ -18,8 +19,10 @@ function App() {
 
       <ProtectedRoute fallback={<AuthContainer />}>
         <main className={styles.main}>
+          <MovieList />
         </main>
       </ProtectedRoute>
+
     </div>
   );
 }
