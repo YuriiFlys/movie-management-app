@@ -31,7 +31,6 @@ export const movieService = {
     return response.data;
   },
 
-  // ВИПРАВЛЕННЯ: Використовуємо MovieUpdateRequest для оновлень
   async updateMovie(id: string, data: MovieUpdateRequest): Promise<MovieApiResponse> {
     const response = await apiClient.patch(`/movies/${id}`, data);
     return response.data;
