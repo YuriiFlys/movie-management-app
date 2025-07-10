@@ -5,6 +5,11 @@ export const selectIsAuthenticated = (state: RootState) => state.auth.isAuthenti
 export const selectAuthLoading = (state: RootState) => state.auth.loading;
 export const selectAuthError = (state: RootState) => state.auth.error;
 
+export const selectMovies = (state: RootState) => state.movies.movies;
+export const selectMoviesLoading = (state: RootState) => state.movies.loading;
+export const selectMoviesError = (state: RootState) => state.movies.error;
+export const selectSelectedMovie = (state: RootState) => state.movies.selectedMovie;
+
 export const selectIsModalOpen = (state: RootState) => state.ui.isModalOpen;
 export const selectModalType = (state: RootState) => state.ui.modalType;
 export const selectNotifications = (state: RootState) => state.ui.notifications;
