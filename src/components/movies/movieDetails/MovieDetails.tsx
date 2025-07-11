@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import LoadingSpinner from '@/components/common/loadingSpinner/LoadingSpinner';
 import ErrorMessage from '@/components/common/errorMessage/ErrorMessage';
+import Button from '@/components/common/button/Button';
+import Modal from '@/components/common/modal/Modal';
 import { useMovies } from '@/hooks/useMovies';
 import styles from './MovieDetails.module.css';
 
@@ -9,8 +11,18 @@ interface MovieDetailsProps {
     onClose: () => void;
 }
 
-const MovieDetails: React.FC<MovieDetailsProps> = ({ movieId }) => {
-    const { selectedMovie, loading, error, loadMovieById, clearMoviesError } = useMovies();
+const MovieDetails: React.FC<MovieDetailsProps> = ({ movieId, onClose }) => {
+    const { 
+        selectedMovie, 
+        selectedMovieLoading, 
+        selectedMovieError, 
+        deleteMovieLoading,
+        loadMovieById, 
+        removeMovie,
+        clearMoviesError 
+    } = useMovies();
+
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
     useEffect(() => {
         if (movieId) {
@@ -21,6 +33,16 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movieId }) => {
             clearMoviesError();
         };
     }, [movieId]);
+
+    const handleDeleteMovie = async () => {
+        if (!selectedMovie) return;
+
+        const success = await removeMovie(selectedMovie.id);
+        if (success) {
+            setShowDeleteConfirm(false);
+            onClose();
+        }
+    };
 
     const formatDate = (dateString: string | undefined): string => {
         if (!dateString) return 'Not available';
@@ -47,7 +69,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movieId }) => {
 
     const hasDateInfo = selectedMovie && (selectedMovie.createdAt || selectedMovie.updatedAt);
 
-    if (loading) {
+    if (selectedMovieLoading) {
         return (
             <div className={styles.loadingContainer}>
                 <LoadingSpinner message="Loading movie details..." />
@@ -55,11 +77,11 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movieId }) => {
         );
     }
 
-    if (error) {
+    if (selectedMovieError) {
         return (
             <ErrorMessage
                 title="Error loading movie"
-                message={error}
+                message={selectedMovieError}
                 onRetry={() => loadMovieById(movieId)}
                 className={styles.errorContainer}
             />
@@ -79,7 +101,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movieId }) => {
         switch (format) {
             case 'VHS': return 'hsl(280, 50%, 50%)';
             case 'DVD': return 'hsl(220, 90%, 55%)';
-            case 'Blu-ray': return 'hsl(120, 50%, 45%)';
+            case 'Blu-Ray': return 'hsl(120, 50%, 45%)';
             default: return 'hsl(220, 10%, 60%)';
         }
     };
@@ -98,6 +120,17 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movieId }) => {
                             {selectedMovie.format}
                         </span>
                     </div>
+                </div>
+                
+                <div className={styles.actions}>
+                    <Button
+                        variant="danger"
+                        size="sm"
+                        onClick={() => setShowDeleteConfirm(true)}
+                        disabled={deleteMovieLoading}
+                    >
+                        {deleteMovieLoading ? 'Deleting...' : 'Delete Movie'}
+                    </Button>
                 </div>
             </div>
 
@@ -155,6 +188,39 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movieId }) => {
                     </div>
                 </div>
             </div>
+
+            <Modal
+                isOpen={showDeleteConfirm}
+                onClose={() => setShowDeleteConfirm(false)}
+                title="Confirm Delete"
+                size="sm"
+            >
+                <div className={styles.deleteConfirmContent}>
+                    <p className={styles.deleteMessage}>
+                        Are you sure you want to delete <strong>"{selectedMovie.title}"</strong>?
+                    </p>
+                    <p className={styles.deleteWarning}>
+                        This action cannot be undone.
+                    </p>
+                    
+                    <div className={styles.deleteActions}>
+                        <Button
+                            variant="secondary"
+                            onClick={() => setShowDeleteConfirm(false)}
+                            disabled={deleteMovieLoading}
+                        >
+                            Cancel
+                        </Button>
+                        <Button
+                            variant="danger"
+                            onClick={handleDeleteMovie}
+                            disabled={deleteMovieLoading}
+                        >
+                            {deleteMovieLoading ? 'Deleting...' : 'Delete Movie'}
+                        </Button>
+                    </div>
+                </div>
+            </Modal>
         </div>
     );
 };

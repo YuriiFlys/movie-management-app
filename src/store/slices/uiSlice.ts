@@ -37,7 +37,6 @@ const uiSlice = createSlice({
         },
     },
 });
-
 export const {
     openModal,
     closeModal,

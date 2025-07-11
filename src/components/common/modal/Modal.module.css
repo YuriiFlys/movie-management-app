@@ -73,7 +73,6 @@
     flex: 1;
 }
 
-/* Sizes */
 .sm {
     width: 100%;
     max-width: 28rem;
@@ -94,7 +93,6 @@
     max-width: 64rem;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;

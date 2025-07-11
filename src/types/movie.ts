@@ -11,7 +11,7 @@ export interface Movie {
 export enum MovieFormat {
     VHS = 'VHS',
     DVD = 'DVD',
-    BLURAY = 'Blu-ray'
+    BLURAY = 'Blu-Ray'
 }
 
 export interface MovieFormData {
@@ -25,8 +25,6 @@ export interface MovieFilters {
     searchQuery?: string;
     actorName?: string;
     format?: MovieFormat;
-    yearFrom?: number;
-    yearTo?: number;
 }
 
 export interface SortOptions {
