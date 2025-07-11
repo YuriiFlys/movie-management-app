@@ -1,6 +1,25 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL
+const getApiUrl = (): string => {
+    if (typeof window !== 'undefined' && (window as any).ENV?.VITE_API_URL) {
+        return (window as any).ENV.VITE_API_URL;
+    }
+    
+    if (import.meta.env.VITE_API_URL) {
+        return import.meta.env.VITE_API_URL;
+    }
+    
+    return 'http://localhost';
+};
+
+const API_URL = getApiUrl();
+
+console.log('🔧 API Configuration:', {
+    apiUrl: API_URL,
+    source: typeof window !== 'undefined' && (window as any).ENV?.VITE_API_URL 
+        ? 'runtime (Docker)' 
+        : 'build-time'
+});
 
 export const apiClient = axios.create({
     baseURL: API_URL,
