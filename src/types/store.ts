@@ -24,16 +24,37 @@ export interface UiState {
 
 export interface MoviesState {
     movies: Movie[];
-    loading: boolean;
-    error: string | null;
+    moviesLoading: boolean;
+    moviesError: string | null;
     selectedMovie: Movie | null;
     selectedMovieLoading: boolean;
     selectedMovieError: string | null;
+    createMovieLoading: boolean;
+    createMovieError: string | null;
+    updateMovieLoading: boolean;
+    updateMovieError: string | null;
+    deleteMovieLoading: boolean;
+    deleteMovieError: string | null;
+    isInitialized: boolean
     filters: MovieFilters;
     sortOptions: SortOptions;
-    searchResults: Movie[];
-    isSearching: boolean;
-}
+    isImporting: boolean;
+    importProgress: {
+      total: number;
+      imported: number;
+      failed: number;
+    } | null;
+    currentQuery: {
+      sort?: 'id' | 'title' | 'year';
+      order?: 'ASC' | 'DESC';
+      limit?: number;
+      offset?: number;
+      actor?: string;
+      title?: string;
+      search?: string;
+    };
+    totalMovies: number;
+  }
 
 export interface Notification {
     id: string;

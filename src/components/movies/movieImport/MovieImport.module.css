@@ -1,0 +1,113 @@
+.container {
+    max-width: 40rem;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: hsl(220, 20%, 15%);
+    letter-spacing: -0.025em;
+}
+
+.description {
+    margin: 0;
+    color: hsl(220, 10%, 55%);
+    line-height: 1.5;
+    font-size: 0.875rem;
+}
+
+.dropZone {
+    border: 0.125rem dashed hsl(220, 15%, 85%);
+    border-radius: 0.75rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: hsl(220, 15%, 98%);
+    margin-bottom: 1.5rem;
+}
+
+.dropZone:hover {
+    border-color: hsl(220, 90%, 55%);
+    background: hsl(220, 90%, 98%);
+}
+
+.dragActive {
+    border-color: hsl(220, 90%, 55%);
+    background: hsl(220, 90%, 95%);
+    transform: scale(1.02);
+}
+
+.hasFile {
+    border-color: hsl(120, 50%, 45%);
+    background: hsl(120, 50%, 97%);
+}
+
+.hasFile:hover {
+    border-color: hsl(120, 50%, 35%);
+    background: hsl(120, 50%, 95%);
+}
+
+.hiddenInput {
+    display: none;
+}
+
+.dropContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.uploadIcon,
+.fileIcon {
+    color: hsl(220, 15%, 60%);
+    opacity: 0.8;
+}
+
+.hasFile .fileIcon {
+    color: hsl(120, 50%, 45%);
+}
+
+.uploadText {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.uploadTitle {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: hsl(220, 20%, 25%);
+}
+
+.uploadSubtext {
+    font-size: 0.875rem;
+    color: hsl(220, 10%, 55%);
+}
+
+.fileName {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: hsl(220, 20%, 15%);
+    word-break: break-all;
+}
+
+.fileSize {
+    font-size: 0.875rem;
+    color: hsl(220, 10%, 55%);
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}

@@ -12,7 +12,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, onMovieClick }) => {
         switch (format) {
             case 'VHS': return 'hsl(280, 50%, 50%)';
             case 'DVD': return 'hsl(220, 90%, 55%)';
-            case 'Blu-ray': return 'hsl(120, 50%, 45%)';
+            case 'Blu-Ray': return 'hsl(120, 50%, 45%)';
             default: return 'hsl(220, 10%, 60%)';
         }
     };

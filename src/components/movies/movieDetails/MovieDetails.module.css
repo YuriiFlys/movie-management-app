@@ -169,3 +169,27 @@
     text-align: right;
     word-break: break-word;
 }
+
+.deleteConfirmContent {
+    padding: 1rem 0;
+}
+
+.deleteMessage {
+    margin: 0 0 0.75rem 0;
+    font-size: 1rem;
+    color: #374151;
+    line-height: 1.5;
+}
+
+.deleteWarning {
+    margin: 0 0 1.5rem 0;
+    font-size: 0.875rem;
+    color: #dc2626;
+    font-weight: 500;
+}
+
+.deleteActions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
