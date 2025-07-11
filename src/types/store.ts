@@ -27,11 +27,13 @@ export interface MoviesState {
     loading: boolean;
     error: string | null;
     selectedMovie: Movie | null;
+    selectedMovieLoading: boolean;
+    selectedMovieError: string | null;
     filters: MovieFilters;
     sortOptions: SortOptions;
     searchResults: Movie[];
     isSearching: boolean;
-  }
+}
 
 export interface Notification {
     id: string;

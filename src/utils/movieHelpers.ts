@@ -20,6 +20,8 @@ export const convertApiMovieToMovie = (apiMovie: ApiMovie): Movie => {
         year: typeof apiMovie.year === 'string' ? parseInt(apiMovie.year, 10) : apiMovie.year,
         format: apiMovie.format as Movie['format'],
         actors: actors,
+        createdAt: apiMovie.createdAt,
+        updatedAt: apiMovie.updatedAt,
     };
 };
 
