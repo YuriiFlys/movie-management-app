@@ -4,9 +4,10 @@ import styles from './MovieCard.module.css';
 
 interface MovieCardProps {
     movie: Movie;
+    onMovieClick?: (movieId: string) => void;
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
+const MovieCard: React.FC<MovieCardProps> = ({ movie, onMovieClick }) => {
     const getFormatColor = (format: string) => {
         switch (format) {
             case 'VHS': return 'hsl(280, 50%, 50%)';
@@ -16,8 +17,26 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
         }
     };
 
+    const handleClick = () => {
+        if (onMovieClick) {
+            onMovieClick(movie.id);
+        }
+    };
+
     return (
-        <div className={styles.card}>
+        <div
+            className={styles.card}
+            onClick={handleClick}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleClick();
+                }
+            }}
+            aria-label={`View details for ${movie.title}`}
+        >
             <div className={styles.header}>
                 <h3 className={styles.title}>{movie.title}</h3>
                 <span
@@ -29,19 +48,12 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
             </div>
 
             <div className={styles.detailLabel}>Year: </div>
-                <div className={styles.year}>
-                    {movie.year}
-                </div>
+            <div className={styles.year}>
+                {movie.year}
+            </div>
 
-            <div className={styles.actors}>
-                <div className={styles.detailLabel}>Actors:</div>
-                <div className={styles.actorsList}>
-                    {movie.actors.length > 0 ? (
-                        movie.actors.join(', ')
-                    ) : (
-                        <span className={styles.noActors}>No actors listed</span>
-                    )}
-                </div>
+            <div className={styles.viewHint}>
+                Click to view details
             </div>
         </div>
     );

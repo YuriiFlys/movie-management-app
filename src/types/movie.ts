@@ -4,8 +4,8 @@ export interface Movie {
     year: number;
     format: MovieFormat;
     actors: string[];
-    createdAt?: Date;
-    updatedAt?: Date;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 export enum MovieFormat {
