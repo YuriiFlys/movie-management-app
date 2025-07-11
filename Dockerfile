@@ -8,9 +8,6 @@ RUN npm install && npm cache clean --force
 
 COPY . .
 
-ARG VITE_API_URL=http://localhost:8000/api/v1
-ENV VITE_API_URL=$VITE_API_URL
-
 RUN npm run build
 
 FROM nginx:alpine AS production
@@ -26,8 +23,6 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh && \
     sed -i 's/\r$//' /usr/local/bin/docker-entrypoint.sh
 
 EXPOSE 3000
-
-ENV API_URL=http://localhost:8000/api/v1
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
